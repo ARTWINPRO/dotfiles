@@ -41,7 +41,7 @@ return {
         client.server_capabilities.implementationProvider = false
         client.server_capabilities.referencesProvider = false
         client.server_capabilities.renameProvider = false
-        client.server_capabilities.selectionRangeProvider = false
+        client.server_capabilities.selectionRangePovider = false
         client.server_capabilities.signatureHelpProvider = false
         client.server_capabilities.typeDefinitionProvider = false
         client.server_capabilities.workspaceSymbolProvider = false
@@ -52,7 +52,7 @@ return {
         client.server_capabilities.documentRangeFormattingProvider = false
       end,
       init_options = {
-        ["language_server_phpstan.enabled"] = false,
+        ["language_server_phpstan.enabled"] = true,
         ["language_server_psalm.enabled"] = false,
       },
       handlers = {
@@ -61,22 +61,27 @@ return {
     })
 
     -- Vue, JavaScript, TypeScript
-    require('lspconfig').volar.setup({
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-        -- if client.server_capabilities.inlayHintProvider then
-        --   vim.lsp.buf.inlay_hint(bufnr, true)
-        -- end
-      end,
-      capabilities = capabilities,
-      -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
-      -- This drastically improves the responsiveness of diagnostic updates on change
-      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    })
+    -- require('lspconfig').volar.setup({
+    --   on_attach = function(client, bufnr)
+    --     client.server_capabilities.documentFormattingProvider = false
+    --     client.server_capabilities.documentRangeFormattingProvider = false
+    --     -- if client.server_capabilities.inlayHintProvider then
+    --     --   vim.lsp.buf.inlay_hint(bufnr, true)
+    --     -- end
+    --   end,
+    --   capabilities = capabilities,
+    --   -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
+    --   -- This drastically improves the responsiveness of diagnostic updates on change
+    --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    -- })
 
     -- Tailwind CSS
-    require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+--    require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+    -- Angular & typescript LSP
+    require('lspconfig').biome.setup({ capabilities = capabilities })
+    require('lspconfig').angularls.setup({ capabilities = capabilities
+   , filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" }
+    })
 
     -- JSON
     require('lspconfig').jsonls.setup({

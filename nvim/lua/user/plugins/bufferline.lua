@@ -12,7 +12,7 @@ return {
       offsets = {
         {
           filetype = 'NvimTree',
-          text = '  Files',
+          text = '  ARTWIN',
           highlight = 'StatusLine',
           text_align = 'left',
         },
