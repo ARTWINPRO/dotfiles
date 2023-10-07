@@ -77,6 +77,8 @@ return {
 
     -- Tailwind CSS
 --    require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
+--    
+--
     -- Angular & typescript LSP
     require('lspconfig').biome.setup({ capabilities = capabilities })
     require('lspconfig').angularls.setup({ capabilities = capabilities

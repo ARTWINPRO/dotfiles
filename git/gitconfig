@@ -88,3 +88,6 @@
     rebase = false
 [init]
     defaultBranch = main
+[user]
+	name = Artur Melikbekian
+	email = Artur.Melikbekian@artwin.pro

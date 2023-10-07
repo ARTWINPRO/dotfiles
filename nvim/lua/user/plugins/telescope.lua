@@ -13,6 +13,7 @@ return {
     { '<leader>g', function() require('telescope').extensions.live_grep_args.live_grep_args() end },
     { '<leader>h', function() require('telescope.builtin').oldfiles() end },
     { '<leader>s', function() require('telescope.builtin').lsp_document_symbols() end },
+    { '<leader>r', function() require('telescope.builtin').live_grep() end },  -- Added this line
   },
   config = function ()
     local actions = require('telescope.actions')
